@@ -30,13 +30,17 @@ Your CPU doesn't plan all its function calls upfront. It pushes a **stack frame*
 
 | | Dynamic Workflows | pi-stack-todo |
 |---|---|---|
-| **Strategy** | Pre-planned DAG. Plan first, execute in parallel. | Emergent call tree. Push when complexity is discovered, pop when resolved. |
-| **Best for** | Large-scale tasks that are **easy to plan** but benefit from massive parallelism. | Deep, **non-parallelizable** work where the path isn't known in advance. |
-| **Planning** | Upfront. You need to know the shape of the work before starting. | Organic. You discover subtasks AS you work. Push when you hit complexity. |
-| **Parallelism** | Yes — designed for it. | No — this is a subroutine model. One thing at a time, in depth. |
-| **Focus** | Breadth. Divide and conquer. | Depth. Drill down, then come back up. |
+| **Strategy** | Script-first. Model writes orchestration code upfront (Turing-complete JS: while loops, dynamic fan-out), then a deterministic runtime executes in parallel. | Emergent call stack. Push when complexity is discovered during work, pop when resolved. No pre-written script. |
+| **Best for** | Large-scale tasks that **can be decomposed in advance** — even complex decompositions (Bun: 750K lines, 3 phases, hundreds of parallel agents with dual reviewer). | Deep, **non-parallelizable** work where the decomposition is NOT known upfront. The path reveals itself as you go. |
+| **Planning** | Upfront via generated JS. Stages, parallel branches, and cross-validation are all defined before execution starts. | Organic. Subtasks emerge AS you work. Push only when you hit complexity. |
+| **Parallelism** | Yes — designed for massive fan-out (up to 16 concurrent, 1000 agents per run). | No — strictly sequential subroutine model. One active focus at a time. |
+| **Model's role during execution** | Sleeping. The JavaScript runtime orchestrates. The model only wakes at `agent()` call sites to do the actual work. | Always-on. The model actively decides when to push, pop, or abandon — it IS the runtime. |
+| **Reusability** | Scripts saved as `/commands` — run the same orchestration on different inputs. | Ad-hoc. The stack is a live session artifact, not a reusable template. |
+| **Focus** | Breadth. Divide and conquer across hundreds of files / agents. | Depth. Drill into complexity, resolve it, then pop back to the parent. |
 
-> Dynamic Workflows scales **out**. pi-stack-todo scales **down**.
+> Dynamic Workflows scales **out** (parallel fan-out, pre-scripted orchestration). pi-stack-todo scales **down** (sequential depth, emergent discovery).
+>
+> They are complementary, not competing. Use DW when you know enough to write the plan. Use ST when you don't.
 
 ---
 
