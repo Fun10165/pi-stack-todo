@@ -2,6 +2,8 @@
 
 > Subroutine-style task orchestration for Pi — **save context, jump, restore.**
 
+[中文文档](README.zh.md) | [English](README.md)
+
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![pi-package](https://img.shields.io/badge/pi-package-blueviolet)
 

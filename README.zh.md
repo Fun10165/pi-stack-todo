@@ -2,6 +2,8 @@
 
 > 将 OS 子程序调用模型搬进你的 AI 编程助手 — **保护现场、跳转、恢复、永不遗忘。**
 
+[English](README.md) | [中文文档](README.zh.md)
+
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![pi-package](https://img.shields.io/badge/pi-package-blueviolet)
 
