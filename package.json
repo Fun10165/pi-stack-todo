@@ -1,0 +1,32 @@
+{
+  "name": "pi-stack-todo",
+  "version": "1.0.0",
+  "description": "Subroutine-style task orchestration for Pi — save context, jump, restore. Built for deep, non-parallelizable work.",
+  "type": "module",
+  "keywords": [
+    "pi-package",
+    "pi",
+    "todo",
+    "stack",
+    "task-orchestration",
+    "subroutine",
+    "context-management"
+  ],
+  "pi": {
+    "extensions": [
+      "extensions/stack-todo"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fun10165/pi-stack-todo.git"
+  },
+  "author": "Fun10165",
+  "license": "MIT",
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-tui": "*",
+    "typebox": "*"
+  }
+}
